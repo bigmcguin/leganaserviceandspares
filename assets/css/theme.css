@@ -1,37 +1,50 @@
 /*
-  Theme: this site's colours, fonts and spacing.
+  Theme: Legana Service & Spares colours, fonts and spacing.
 
   This is the ONLY file where colours and fonts are set. Every other
   stylesheet (including the nav component) reads these custom properties.
-  The values below are placeholders for the template: replace them with
-  each site's own palette and typefaces.
+
+  Palette: workshop concrete, ink, overall blue and the yellow of a painted
+  safety line. Yellow is a fill only: it is never used for text.
 */
 
-:root {
-  /* Colour: placeholder palette (cool paper, slate ink, eucalyptus accent) */
-  --colour-paper: #f2f4f1;          /* page background */
-  --colour-surface: #ffffff;        /* raised surfaces, mobile menu panel */
-  --colour-ink: #1f2a2e;            /* body text */
-  --colour-ink-muted: #56636a;      /* secondary text */
-  --colour-line: #d3d9d6;           /* borders and dividers */
-  --colour-accent: #2d6a58;         /* links, current page, focus ring */
-  --colour-accent-strong: #1d4a3d;  /* hover and pressed states */
-  --colour-on-accent: #ffffff;      /* text on accent backgrounds */
+/* Archivo is a variable font with a width axis: wide and heavy for headings,
+   normal width for reading. */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap");
 
-  /* Fonts: system stacks so the template loads nothing extra */
-  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+:root {
+  /* Colour */
+  --colour-paper: #ecedea;          /* page background: workshop concrete */
+  --colour-surface: #ffffff;        /* raised surfaces, mobile menu panel */
+  --colour-ink: #18212b;            /* body text */
+  --colour-ink-muted: #4f5a64;      /* secondary text */
+  --colour-line: #c9cecc;           /* borders and dividers */
+  --colour-accent: #1f4f86;         /* links, current page, focus ring */
+  --colour-accent-strong: #153a64;  /* hover and pressed states */
+  --colour-on-accent: #ffffff;      /* text on accent backgrounds */
+  --colour-signal: #f3c433;         /* safety-line yellow: fills only */
+  --colour-on-signal: #18212b;      /* text on the yellow */
+  --colour-deep: #18212b;           /* dark bands */
+  --colour-on-deep: #ecedea;        /* text on dark bands */
+  --colour-on-deep-muted: #aab4bc;  /* secondary text on dark bands */
+
+  /* Fonts */
+  --font-body: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-display: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --display-stretch: 125%;          /* wide cut for headings */
+  --display-weight: 800;
 
   /* Type scale (roughly a 1.25 ratio) */
   --text-sm: 0.875rem;
   --text-base: 1.0625rem;
   --text-lg: 1.25rem;
   --text-xl: 1.6rem;
-  --text-2xl: 2.1rem;
-  --text-3xl: clamp(2.4rem, 6vw, 3.6rem);
+  --text-2xl: clamp(1.75rem, 3.6vw, 2.4rem);
+  --text-3xl: clamp(2.2rem, 6vw, 4.25rem);
+  --text-giant: clamp(2.6rem, 9vw, 7.25rem);
   --leading-body: 1.6;
-  --leading-tight: 1.15;
-  --measure: 66ch;                  /* comfortable line length */
+  --leading-tight: 1.08;
+  --measure: 64ch;                  /* comfortable line length */
 
   /* Spacing */
   --space-1: 0.25rem;
@@ -42,11 +55,12 @@
   --space-6: 2rem;
   --space-7: 3rem;
   --space-8: 4.5rem;
+  --space-9: 7rem;
 
   /* Layout */
-  --page-max-width: 72rem;
+  --page-max-width: 76rem;
   --page-gutter: clamp(1rem, 4vw, 2.5rem);
-  --radius: 0.375rem;
+  --radius: 0.25rem;
 
   /* Navigation */
   --nav-bar-height: 4rem;           /* fixed height of the top bar */
@@ -59,6 +73,7 @@
 
   /* Motion */
   --duration-fast: 160ms;
+  --duration-slow: 700ms;
   --easing: cubic-bezier(0.2, 0, 0, 1);
 
   /*

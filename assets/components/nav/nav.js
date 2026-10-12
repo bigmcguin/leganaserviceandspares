@@ -18,11 +18,13 @@
      { label: 'Contact', href: 'index.html#contact' }.
      ------------------------------------------------------------------ */
   var NAV_CONFIG = {
-    siteName: 'Site name',
+    siteName: 'Legana Service & Spares',
     menuLabel: 'Main',
     items: [
       { label: 'Home', href: 'index.html' },
-      { label: 'About', href: 'about.html' }
+      { label: 'Services', href: 'services.html' },
+      { label: 'About', href: 'about.html' },
+      { label: 'Contact', href: 'contact.html' }
     ]
   };
   /* ------------------------------------------------------------------ */

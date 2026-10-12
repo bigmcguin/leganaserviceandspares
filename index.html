@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home | Site name</title>
-  <meta name="description" content="A plain HTML, CSS and JavaScript starting point for a new website.">
+  <title>Legana Service &amp; Spares | Car, 4WD, caravan and trailer servicing in Legana</title>
+  <meta name="description" content="Locally owned workshop in Legana, Tasmania. Logbook servicing, repairs, roadworthy inspections, tyres, batteries and parts. Call (03) 6330 1447.">
   <link rel="stylesheet" href="assets/css/theme.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/components/nav/nav.css">
@@ -14,23 +14,104 @@
   <header data-site-nav></header>
 
   <main id="main" class="page" tabindex="-1">
-    <h1>A starting point for a new website</h1>
-    <p class="lede">This page is a placeholder. Swap in the site's real name, colours and words, and it is ready to publish.</p>
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <h1 id="hero-title">Cars, 4WDs, caravans and trailers, serviced in Legana.</h1>
+      <p class="lede">A locally owned workshop in the West Tamar for servicing, repairs, roadworthies and parts, all under one roof.</p>
+      <div class="actions">
+        <a class="button" href="tel:+61363301447">Call to book</a>
+        <a class="button button--plain" href="services.html">See our services</a>
+      </div>
+    </section>
 
-    <h2>Making it your own</h2>
-    <ol class="steps">
-      <li>Set the site's colours, fonts and spacing in <code>assets/css/theme.css</code>.</li>
-      <li>Change the site name and menu items in the config at the top of <code>assets/components/nav/nav.js</code>.</li>
-      <li>Replace the text on this page and on the About page.</li>
-      <li>Add new pages by copying the head and header from an existing page, then add one line to the menu config.</li>
-    </ol>
+    <figure class="photo photo--wide">
+      <img src="assets/images/workshop-hoist-1600.webp"
+        srcset="assets/images/workshop-hoist-960.webp 960w, assets/images/workshop-hoist-1600.webp 1600w"
+        sizes="(max-width: 767px) 200vw, 100vw" width="1600" height="686"
+        alt="A mechanic inspecting the underside of a 4WD raised on a hoist, with green hills through the open roller door">
+    </figure>
 
-    <h2>Publishing</h2>
-    <p>Hostinger copies this repository into <code>public_html</code> whenever <code>main</code> changes, so merging a pull request publishes it straight away.</p>
+    <section class="floorline" aria-label="Phone">
+      <div class="wrap">
+        <p class="floorline__note">Bookings, quotes and parts enquiries</p>
+        <a class="floorline__number" href="tel:+61363301447">(03) 6330 1447</a>
+      </div>
+    </section>
+
+    <section class="band wrap" aria-labelledby="services-title">
+      <div class="section-head">
+        <h2 id="services-title">What we do</h2>
+        <a href="services.html">All services</a>
+      </div>
+      <ul class="service-list">
+        <li>
+          <h3>Servicing and logbook servicing</h3>
+          <p>Scheduled servicing to the manufacturer's logbook, so your new-car warranty stays intact.</p>
+        </li>
+        <li>
+          <h3>Roadworthy inspections</h3>
+          <p>We're a licensed AIS inspection station and can supply the paperwork to register your vehicle in Tasmania.</p>
+        </li>
+        <li>
+          <h3>Brakes, suspension and exhaust</h3>
+          <p>Inspections, repairs and replacement parts for the systems that keep you safe and comfortable.</p>
+        </li>
+        <li>
+          <h3>Tyres and wheel alignments</h3>
+          <p>Tyre sales, puncture repairs and alignments to stop uneven wear.</p>
+        </li>
+        <li>
+          <h3>Batteries and auto electrical</h3>
+          <p>Century batteries supplied and fitted, plus fault finding on electrical systems.</p>
+        </li>
+        <li>
+          <h3>Parts counter</h3>
+          <p>Spare parts, Penrite oils, spark plugs and batteries, over the counter.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="band band--deep" aria-labelledby="registration-title">
+      <div class="wrap split">
+        <div>
+          <h2 id="registration-title">Roadworthy and registration, done here</h2>
+          <p>Buying a vehicle from interstate, or re-registering one that's been off the road? As an approved inspection station we can inspect it, fix anything that needs fixing, and give you the paperwork for registration, without sending you to another workshop.</p>
+          <p><a href="contact.html">Book an inspection</a></p>
+        </div>
+        <ul class="facts">
+          <li><strong>AIS Inspection Station</strong><span>Licensed to carry out vehicle inspections in Tasmania</span></li>
+          <li><strong>TACC Accredited Repairer</strong><span>Member of the Tasmanian Automobile Chamber of Commerce</span></li>
+          <li><strong>RACT Roadside Agent</strong><span>Local roadside assistance for RACT members</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="band wrap" aria-labelledby="visit-title">
+      <h2 id="visit-title">Find us on Legana Park Drive</h2>
+      <p class="lede">We're in the Legana industrial estate, just off the West Tamar Highway. We can also pick up and drop off vehicles around Legana.</p>
+      <dl class="details">
+        <div>
+          <dt>Address</dt>
+          <dd>2 Legana Park Drive<br>Legana TAS 7277<br><a href="https://www.google.com/maps/search/?api=1&amp;query=2+Legana+Park+Drive+Legana+TAS+7277">Get directions</a></dd>
+        </div>
+        <div>
+          <dt>Opening hours</dt>
+          <dd>Monday to Friday<br>8 am to 5 pm<br><span class="muted">Closed weekends</span></dd>
+        </div>
+        <div>
+          <dt>Phone and email</dt>
+          <dd><a href="tel:+61363301447">(03) 6330 1447</a><br><a href="mailto:serviceandspares@bigpond.com">serviceandspares@bigpond.com</a></dd>
+        </div>
+      </dl>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <p>Site name</p>
+    <div class="wrap">
+      <p class="site-footer__name">Legana Service &amp; Spares</p>
+      <p>2 Legana Park Drive<br>Legana TAS 7277</p>
+      <p><a href="tel:+61363301447">(03) 6330 1447</a><br><a href="mailto:serviceandspares@bigpond.com">serviceandspares@bigpond.com</a></p>
+      <p>Monday to Friday, 8 am to 5 pm<br>Closed weekends</p>
+    </div>
   </footer>
 </body>
 </html>
