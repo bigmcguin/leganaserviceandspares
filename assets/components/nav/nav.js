@@ -139,13 +139,26 @@
 
     // Scroll a same-page link's section (or the top of the page) into view
     // just below the header, and move keyboard focus there.
-    function scrollToSection(url) {
+    // From the open mobile menu the jump is instant and waits a frame for the
+    // scroll lock to come off: iOS Safari stops a smooth scroll that starts
+    // while the page is being unlocked, leaving it part-way down the page.
+    function scrollToSection(url, fromMenu) {
       var id = url.hash ? decodeURIComponent(url.hash.slice(1)) : '';
       var target = id ? document.getElementById(id) : null;
       if (id && !target) return false;
 
-      var top = target ? target.getBoundingClientRect().top + window.pageYOffset - headerOffset(target) : 0;
-      window.scrollTo({ top: Math.max(0, top), behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+      function jump() {
+        var top = target ? target.getBoundingClientRect().top + window.pageYOffset - headerOffset(target) : 0;
+        window.scrollTo({
+          top: Math.max(0, top),
+          behavior: fromMenu || reduceMotion.matches ? 'auto' : 'smooth'
+        });
+      }
+      if (fromMenu) {
+        window.requestAnimationFrame(jump);
+      } else {
+        jump();
+      }
 
       if (url.href !== location.href) history.pushState(null, '', url.href);
 
@@ -163,13 +176,14 @@
     header.addEventListener('click', function (event) {
       var link = event.target.closest('a');
       if (!link) return;
+      var fromMenu = isOpen();
       close(false);
 
       var newTab = event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
       if (newTab || link.target === '_blank') return;
 
       var url = new URL(link.href);
-      if (isSamePage(url) && scrollToSection(url)) event.preventDefault();
+      if (isSamePage(url) && scrollToSection(url, fromMenu)) event.preventDefault();
     });
 
     document.addEventListener('keydown', function (event) {
