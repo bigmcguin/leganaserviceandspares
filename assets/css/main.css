@@ -203,6 +203,48 @@ a:hover {
   max-width: 16em;
 }
 
+/* Photographs */
+
+.photo {
+  margin: 0;
+}
+
+.photo img {
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+/* Full-width photo on the home page, sitting directly on the floor line */
+.photo--wide img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: 38% 50%;
+  border-radius: 0;
+}
+
+@media (min-width: 768px) {
+  .photo--wide img {
+    aspect-ratio: 21 / 8;
+  }
+}
+
+.page-head--photo {
+  display: grid;
+  gap: var(--space-6);
+  align-items: end;
+}
+
+@media (min-width: 900px) {
+  .page-head--photo {
+    grid-template-columns: 1.3fr 1fr;
+    gap: var(--space-7);
+  }
+}
+
+.page-head--photo .lede {
+  margin-bottom: 0;
+}
+
 /*
   The floor line: a full-width band of safety-line yellow carrying the phone
   number. It is the one bold element on the site; keep everything else quiet.
