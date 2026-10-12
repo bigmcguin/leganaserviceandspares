@@ -36,20 +36,29 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display);
-  font-weight: 600;
   line-height: var(--leading-tight);
   margin: 0 0 var(--space-4);
   text-wrap: balance;
 }
 
+h1,
+h2 {
+  font-stretch: var(--display-stretch);
+  font-weight: var(--display-weight);
+  letter-spacing: -0.015em;
+}
+
 h1 {
   font-size: var(--text-3xl);
-  letter-spacing: -0.01em;
 }
 
 h2 {
-  font-size: var(--text-xl);
-  margin-top: var(--space-7);
+  font-size: var(--text-2xl);
+}
+
+h3 {
+  font-size: var(--text-lg);
+  font-weight: 700;
 }
 
 p {
@@ -71,18 +80,51 @@ a:hover {
   outline-offset: var(--focus-offset);
 }
 
-/* Page layout */
+/* Page layout: <main> holds full-width bands; .wrap centres their content. */
 
 .page {
   flex: 1;
   width: 100%;
-  max-width: var(--page-max-width);
-  margin: 0 auto;
-  padding: var(--space-7) var(--page-gutter) var(--space-8);
 }
 
 .page:focus {
   outline: none;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+.band {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+}
+
+/* Two light bands in a row share one gap rather than doubling it */
+.band:not(.band--deep) + .band:not(.band--deep),
+.page-head + .band:not(.band--deep) {
+  padding-top: var(--space-4);
+}
+
+.band--deep {
+  background: var(--colour-deep);
+  color: var(--colour-on-deep);
+}
+
+.band--deep a {
+  color: var(--colour-on-deep);
+}
+
+.band--deep a:hover {
+  color: var(--colour-signal);
+}
+
+.band--deep :focus-visible {
+  outline-color: var(--colour-signal);
 }
 
 .lede {
@@ -90,34 +132,333 @@ a:hover {
   color: var(--colour-ink-muted);
 }
 
-.steps {
-  max-width: var(--measure);
-  padding-left: var(--space-5);
+.muted {
+  color: var(--colour-ink-muted);
 }
 
-.steps li {
-  margin-bottom: var(--space-3);
-  padding-left: var(--space-2);
+/* Buttons */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
 }
 
-code {
-  font-size: 0.92em;
-  background: var(--colour-surface);
-  border: 1px solid var(--colour-line);
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: var(--space-2) var(--space-5);
+  border: 2px solid var(--colour-ink);
   border-radius: var(--radius);
-  padding: 0.05em 0.35em;
+  background: var(--colour-ink);
+  color: var(--colour-paper);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--easing),
+    color var(--duration-fast) var(--easing);
 }
+
+.button:hover {
+  background: var(--colour-accent-strong);
+  border-color: var(--colour-accent-strong);
+  color: var(--colour-on-accent);
+}
+
+.button--plain {
+  background: transparent;
+  color: var(--colour-ink);
+}
+
+.button--plain:hover {
+  background: var(--colour-ink);
+  border-color: var(--colour-ink);
+  color: var(--colour-paper);
+}
+
+/* Home: opening headline */
+
+.hero {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-7);
+}
+
+.hero h1 {
+  max-width: 14em;
+}
+
+.hero .lede {
+  max-width: 46ch;
+}
+
+/* Page headings on inner pages */
+
+.page-head {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-6);
+}
+
+.page-head h1 {
+  max-width: 16em;
+}
+
+/*
+  The floor line: a full-width band of safety-line yellow carrying the phone
+  number. It is the one bold element on the site; keep everything else quiet.
+  On first load it is painted across from the left, once.
+*/
+
+.floorline {
+  position: relative;
+  color: var(--colour-on-signal);
+  isolation: isolate;
+}
+
+.floorline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--colour-signal);
+  transform-origin: left center;
+  animation: paint-line var(--duration-slow) var(--easing) both;
+}
+
+.floorline .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-6);
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+}
+
+.floorline__note {
+  margin: 0;
+  font-weight: 600;
+  max-width: 22ch;
+}
+
+.floorline__number {
+  font-family: var(--font-display);
+  font-size: var(--text-giant);
+  font-stretch: var(--display-stretch);
+  font-weight: var(--display-weight);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.floorline__number:hover {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.12em;
+}
+
+.floorline__number:focus-visible {
+  outline-color: var(--colour-ink);
+}
+
+@keyframes paint-line {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Lists of services: rows divided by rules, not cards */
+
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  column-gap: var(--space-7);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-list li {
+  padding: var(--space-5) 0;
+  border-top: 2px solid var(--colour-ink);
+}
+
+.service-list h3 {
+  margin-bottom: var(--space-2);
+}
+
+.service-list p {
+  margin: 0;
+  color: var(--colour-ink-muted);
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+}
+
+.section-head h2 {
+  margin: 0;
+}
+
+.section-head a {
+  font-weight: 600;
+}
+
+/* Two columns: text beside a supporting list */
+
+.split {
+  display: grid;
+  gap: var(--space-7);
+}
+
+@media (min-width: 900px) {
+  .split {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: start;
+  }
+}
+
+.split > :last-child > :last-child {
+  margin-bottom: 0;
+}
+
+/* Accreditations and similar short facts */
+
+.facts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.facts li {
+  padding: var(--space-4) 0;
+  border-top: 1px solid currentColor;
+}
+
+.facts li:last-child {
+  border-bottom: 1px solid currentColor;
+}
+
+.facts strong {
+  display: block;
+  font-size: var(--text-lg);
+}
+
+.facts span {
+  color: var(--colour-on-deep-muted);
+}
+
+.band:not(.band--deep) .facts span {
+  color: var(--colour-ink-muted);
+}
+
+/* Contact details: address, hours, phone */
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: var(--space-6);
+  margin: var(--space-6) 0 0;
+}
+
+.details div {
+  border-top: 2px solid var(--colour-ink);
+  padding-top: var(--space-4);
+}
+
+.details dt {
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.details dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.note {
+  margin-top: var(--space-6);
+}
+
+.map {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  margin-top: var(--space-7);
+  border: 2px solid var(--colour-ink);
+  border-radius: var(--radius);
+  background: var(--colour-surface);
+}
+
+/* Prose pages */
+
+.prose h2 {
+  margin-top: var(--space-7);
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+/* Footer */
 
 .site-footer {
-  border-top: 1px solid var(--colour-line);
-  color: var(--colour-ink-muted);
+  background: var(--colour-deep);
+  color: var(--colour-on-deep-muted);
   font-size: var(--text-sm);
 }
 
+.site-footer a {
+  color: var(--colour-on-deep);
+}
+
+.site-footer a:hover {
+  color: var(--colour-signal);
+}
+
+.site-footer :focus-visible {
+  outline-color: var(--colour-signal);
+}
+
+.site-footer .wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: var(--space-5);
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-7);
+}
+
 .site-footer p {
-  max-width: var(--page-max-width);
-  margin: 0 auto;
-  padding: var(--space-5) var(--page-gutter);
+  margin: 0;
+}
+
+.site-footer__name {
+  color: var(--colour-on-deep);
+  font-family: var(--font-display);
+  font-stretch: var(--display-stretch);
+  font-weight: var(--display-weight);
+  font-size: var(--text-lg);
+  line-height: var(--leading-tight);
+}
+
+/* Narrow phones: the wide cut is too wide for the phone number */
+
+@media (max-width: 479.98px) {
+  .floorline__number {
+    font-stretch: 100%;
+    font-size: clamp(2rem, 11.5vw, 3rem);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
