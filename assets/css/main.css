@@ -211,6 +211,10 @@ a:hover {
   margin: 0;
 }
 
+.photo picture {
+  display: block;
+}
+
 .photo img {
   width: 100%;
   border-radius: var(--radius);
@@ -525,13 +529,9 @@ a:hover {
   margin: 0;
 }
 
-.site-footer__name {
-  color: var(--colour-on-deep);
-  font-family: var(--font-display);
-  font-stretch: var(--display-stretch);
-  font-weight: var(--display-weight);
-  font-size: var(--text-lg);
-  line-height: var(--leading-tight);
+.site-footer__name img {
+  height: 3rem;
+  width: auto;
 }
 
 /* Narrow phones: the wide cut is too wide for the phone number */

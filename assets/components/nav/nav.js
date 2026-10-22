@@ -19,6 +19,9 @@
      ------------------------------------------------------------------ */
   var NAV_CONFIG = {
     siteName: 'Legana Service & Spares',
+    // Optional: shown instead of the site name. The site name becomes its
+    // alt text. src is relative to the site root.
+    logo: { src: 'assets/images/logo.webp', width: 231, height: 62 },
     menuLabel: 'Main',
     items: [
       { label: 'Home', href: 'index.html' },
@@ -74,7 +77,7 @@
       '<a class="site-nav__skip" href="#main">Skip to main content</a>' +
       '<div class="site-nav__bar">' +
         '<a class="site-nav__brand" href="' + resolve('index.html').href + '">' +
-          escapeHtml(NAV_CONFIG.siteName) + '</a>' +
+          brand() + '</a>' +
         '<button class="site-nav__toggle" type="button" aria-expanded="false"' +
           ' aria-controls="' + MENU_ID + '" aria-label="Menu">' +
           '<span class="site-nav__icon" aria-hidden="true"></span>' +
@@ -84,6 +87,14 @@
           '<ul class="site-nav__list">' + items + '</ul>' +
         '</nav>' +
       '</div>';
+  }
+
+  function brand() {
+    var logo = NAV_CONFIG.logo;
+    if (!logo) return escapeHtml(NAV_CONFIG.siteName);
+    return '<img class="site-nav__logo" src="' + resolve(logo.src).href + '"' +
+      ' width="' + logo.width + '" height="' + logo.height + '"' +
+      ' alt="' + escapeHtml(NAV_CONFIG.siteName) + '">';
   }
 
   function escapeHtml(text) {

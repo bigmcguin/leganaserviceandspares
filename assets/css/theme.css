@@ -8,9 +8,20 @@
   safety line. Yellow is a fill only: it is never used for text.
 */
 
-/* Archivo is a variable font with a width axis: wide and heavy for headings,
-   normal width for reading. */
-@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap");
+/*
+  Archivo is a variable font with a width axis: wide and heavy for headings,
+  normal width for reading. It is hosted with the site (Latin characters,
+  widths 100-125 %, weights 400-800) so it loads without a trip to Google.
+  Each page preloads it in <head>.
+*/
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400 800;
+  font-stretch: 100% 125%;
+  font-display: swap;
+  src: url("../fonts/archivo.woff2") format("woff2");
+}
 
 :root {
   /* Colour */
@@ -27,6 +38,7 @@
   --colour-deep: #18212b;           /* dark bands */
   --colour-on-deep: #ecedea;        /* text on dark bands */
   --colour-on-deep-muted: #aab4bc;  /* secondary text on dark bands */
+  --colour-deep-line: #34404c;      /* dividers on dark bands */
 
   /* Fonts */
   --font-body: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -62,8 +74,16 @@
   --page-gutter: clamp(1rem, 4vw, 2.5rem);
   --radius: 0.25rem;
 
-  /* Navigation */
-  --nav-bar-height: 4rem;           /* fixed height of the top bar */
+  /* Navigation: a dark bar to carry the logo, which is drawn for black */
+  --nav-bar-height: 4.5rem;         /* fixed height of the top bar */
+  --nav-logo-height: 2.75rem;
+  --nav-bg: var(--colour-deep);
+  --nav-panel-bg: var(--colour-deep);
+  --nav-ink: var(--colour-on-deep);
+  --nav-ink-hover: var(--colour-signal);
+  --nav-current: var(--colour-signal);
+  --nav-line: var(--colour-deep-line);
+  --nav-focus: var(--colour-signal);
   --nav-link-gap: var(--space-5);
   --focus-ring: 3px solid var(--colour-accent);
   --focus-offset: 3px;
