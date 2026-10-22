@@ -21,6 +21,11 @@ the repo root is what the public sees.
 - Use relative links so the site works in `public_html` or a subfolder.
 - Keep the `.htaccess` protection in place. Never remove it.
 - Optimise images before adding them (WebP where possible, sensible sizes).
+- Browsers cache CSS and JS. Every page links them with a version tag such as
+  `main.css?v=20261023`. After changing any CSS or JS file, update the tag to
+  the current date in every page, or visitors keep seeing the old version.
+- Images and fonts are cached for a year: save a replacement under a new file
+  name rather than overwriting the old one.
 
 ## Design
 
