@@ -1,6 +1,8 @@
 /*
   Shared navigation menu styles.
   Colours, fonts and sizes come from assets/css/theme.css.
+  The header can have its own colours: set the optional --nav-* custom
+  properties in theme.css (each falls back to the page colours).
 
   Breakpoint: the mobile menu applies under 768 px. This must match
   DESKTOP_QUERY in nav.js.
@@ -28,8 +30,9 @@
   position: sticky;
   top: 0;
   z-index: var(--z-nav);
-  background: var(--colour-paper);
-  border-bottom: 1px solid var(--colour-line);
+  background: var(--nav-bg, var(--colour-paper));
+  border-bottom: 1px solid var(--nav-line, var(--colour-line));
+  color: var(--nav-ink, var(--colour-ink));
   font-family: var(--font-body);
 }
 
@@ -66,7 +69,7 @@
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 600;
-  color: var(--colour-ink);
+  color: inherit;
   text-decoration: none;
   white-space: nowrap;
   overflow: hidden;
@@ -75,7 +78,7 @@
 }
 
 .site-nav__brand:hover {
-  color: var(--colour-accent-strong);
+  color: var(--nav-ink-hover, var(--colour-accent-strong));
 }
 
 .site-nav__list {
@@ -85,19 +88,19 @@
 }
 
 .site-nav__link {
-  color: var(--colour-ink);
+  color: inherit;
   text-decoration: none;
   border-radius: var(--radius);
 }
 
 .site-nav__link:hover {
-  color: var(--colour-accent-strong);
+  color: var(--nav-ink-hover, var(--colour-accent-strong));
   text-decoration: underline;
   text-decoration-thickness: 1px;
 }
 
 .site-nav__link[aria-current="page"] {
-  color: var(--colour-accent);
+  color: var(--nav-current, var(--colour-accent));
   font-weight: 600;
   text-decoration: underline;
   text-decoration-thickness: 3px;
@@ -109,7 +112,16 @@
 .site-nav__link:focus-visible,
 .site-nav__toggle:focus-visible {
   outline: var(--focus-ring);
+  outline-color: var(--nav-focus, var(--colour-accent));
   outline-offset: var(--focus-offset);
+}
+
+/* Optional logo image (set NAV_CONFIG.logo in nav.js) */
+.site-nav__logo {
+  display: block;
+  height: var(--nav-logo-height, 2.5rem);
+  width: auto;
+  max-width: 100%;
 }
 
 /* Hamburger button */
@@ -125,7 +137,7 @@
   border: 0;
   border-radius: var(--radius);
   background: transparent;
-  color: var(--colour-ink);
+  color: inherit;
   cursor: pointer;
 }
 
@@ -202,8 +214,8 @@
     overflow-y: auto;
     overscroll-behavior: contain;
     padding: var(--space-4) var(--page-gutter) var(--space-7);
-    background: var(--colour-surface);
-    border-top: 1px solid var(--colour-line);
+    background: var(--nav-panel-bg, var(--colour-surface));
+    border-top: 1px solid var(--nav-line, var(--colour-line));
     visibility: hidden;
     opacity: 0;
     transform: translateY(-0.5rem);
@@ -222,7 +234,7 @@
   }
 
   .site-nav__list li {
-    border-bottom: 1px solid var(--colour-line);
+    border-bottom: 1px solid var(--nav-line, var(--colour-line));
   }
 
   .site-nav__link {

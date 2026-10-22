@@ -7,7 +7,8 @@ the repo root is what the public sees.
 ## Repository layout
 
 - `index.html` and other pages sit in the repo root.
-- `assets/css/`, `assets/js/`, `assets/images/`: styles, scripts and images.
+- `assets/css/`, `assets/js/`, `assets/images/`, `assets/fonts/`: styles, scripts,
+  images and the self-hosted font.
 - `assets/components/nav/`: the shared navigation menu (HTML, CSS, JS).
 - `assets/css/theme.css`: this site's colours, fonts and spacing.
 - `.claude/skills/frontend-design/`: Anthropic's frontend-design skill.
